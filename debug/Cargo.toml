@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 speedy2d = "1.2.0"
+dankgine = { path = "../dankgine" }

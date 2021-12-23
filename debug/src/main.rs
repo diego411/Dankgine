@@ -1,3 +1,5 @@
+extern crate dankgine;
+
 use speedy2d::color::Color;
 use speedy2d::dimen::Vector2;
 use speedy2d::window::{MouseButton, WindowHandler, WindowHelper};
