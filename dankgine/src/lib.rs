@@ -1,12 +1,3 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
-}
-
-pub fn update_engine() {
-    print!("Engine updated!");
-}
+pub mod bodies;
+pub mod engine;
+pub mod world;
