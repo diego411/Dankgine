@@ -6,11 +6,10 @@ extern crate serde_json;
 extern crate lazy_static;
 use std::sync::Mutex;
 
-use engine::State;
+use crate::core::engine::State;
 
-mod engine;
+mod core;
 mod geometry;
-mod solver;
 
 lazy_static! {
     static ref STATE: Mutex<State> = Mutex::new(State::new());

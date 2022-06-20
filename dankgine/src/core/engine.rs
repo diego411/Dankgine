@@ -1,6 +1,6 @@
+use crate::core::solver::Solver;
 use crate::geometry::vector::Vec2;
 use crate::geometry::verlet::VerletObject;
-use crate::solver::Solver;
 use crate::STATE;
 use wasm_bindgen::prelude::*;
 
@@ -15,6 +15,7 @@ impl State {
     }
 }
 
+#[allow(dead_code)]
 #[wasm_bindgen]
 pub fn update() -> String {
     let solver = Solver::new();
@@ -22,6 +23,7 @@ pub fn update() -> String {
     serde_json::to_string(&*STATE.lock().unwrap()).unwrap()
 }
 
+#[allow(dead_code)]
 #[wasm_bindgen]
 pub fn add_body(x: f32, y: f32, radius: f32) {
     STATE
