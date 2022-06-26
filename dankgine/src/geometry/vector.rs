@@ -1,6 +1,8 @@
-
-#[cfg(not(feature = "simd"))]
+#[cfg(not(features = "simd"))]
 mod vector {
+    use serde_derive::Serialize;
+    use serde_derive::Deserialize;
+    use std::ops::{Add, Mul, Div, Sub};
 
     #[derive(Clone, Debug, Copy, PartialEq, Serialize, Deserialize)]
     pub struct Vec2 {
@@ -9,7 +11,7 @@ mod vector {
     }
     impl Vec2 {
         pub fn new(x: f32, y: f32) -> Vec2 {
-            Vec2 { x: x, y: y }
+            Vec2 { x, y }
         }
 
         pub fn length(self) -> f32 {
@@ -61,7 +63,7 @@ mod vector {
     }
 }
 
-#[cfg(feature = "simd")]
+#[cfg(features = "simd")]
 mod vector_simd {
 
     use std::ops::{Add, Div, Mul, Sub};
@@ -165,7 +167,7 @@ mod vector_simd {
 
                     let y = seq
                     .next_element()?
-                    .ok_or_else(|| serde::de::Error::invalid_length(0, &self))?;
+                    .ok_or_else(|| serde::de::Error::invalid_length(1, &self))?;
 
                     Ok(Vec2::new(x, y))
                 }
@@ -180,8 +182,8 @@ mod vector_simd {
 }
 
 
-#[cfg(feature = "simd")]
+#[cfg(features = "simd")]
 pub use vector_simd::*;
 
-#[cfg(not(feature = "simd"))]
+#[cfg(not(features = "simd"))]
 pub use vector::*;
