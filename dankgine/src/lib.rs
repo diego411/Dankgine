@@ -1,5 +1,5 @@
 #![cfg_attr(feature = "simd", feature(portable_simd))]
-
+#![feature(test)]
 #[macro_use]
 extern crate serde_derive;
 extern crate serde_json;
@@ -10,7 +10,8 @@ use std::sync::Mutex;
 
 use crate::core::engine::State;
 
-mod core;
+mod bench;
+pub mod core;
 mod geometry;
 
 lazy_static! {
