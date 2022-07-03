@@ -1,5 +1,5 @@
-import init from '../dankgine/pkg/dankgine.js'
-import * as Dankgine from '../dankgine/pkg/dankgine.js'
+import init from './pkg/dankgine.js'
+import * as Dankgine from './pkg/dankgine.js'
 
 init().then(() => {
     new p5(function (p5) {
