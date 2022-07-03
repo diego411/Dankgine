@@ -16,12 +16,12 @@ pub fn update_many(times: usize) {
 }
 
 
-pub fn bench_five_updates(c: &mut Criterion) {
+pub fn bench_updates(c: &mut Criterion) {
     c.bench_function(
-        "add body 5",
-        |b| b.iter(|| update_many(black_box(5)))
+        "add body 10",
+        |b| b.iter(|| update_many(black_box(10)))
     );
 }
 
-criterion_group!(benches, bench_five_updates);
+criterion_group!(benches, bench_updates);
 criterion_main!(benches);

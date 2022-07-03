@@ -25,4 +25,4 @@ criterion = "0.3.4"
 
 [[bench]]
 harness = false
-name = "example"
+name = "ten_updates"
