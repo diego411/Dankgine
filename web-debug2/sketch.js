@@ -1,5 +1,5 @@
-import init from '../dankgine/pkg/dankgine.js'
-import * as Dankgine from '../dankgine/pkg/dankgine.js'
+import init from '../pkg/dankgine.js'
+import * as Dankgine from '../pkg/dankgine.js'
 
 init().then(() => {
     new p5(function (p5) {
@@ -15,9 +15,8 @@ init().then(() => {
             p5.background(0)
 
             state = JSON.parse(Dankgine.update())
-            console.log(state)
-            for (const pos of state.entities.current_positions) {
-                p5.circle(pos.x, pos.y, 10)//body.radius * 2)
+            for (const body of state.bodies) {
+                p5.circle(body.current_position.x, body.current_position.y, body.radius * 2)//body.radius * 2)
             }
 
             if (p5.frameCount % 16 === 0) {
