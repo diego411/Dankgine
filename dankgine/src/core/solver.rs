@@ -9,14 +9,14 @@ pub struct Solver {
 impl Solver {
     pub fn new() -> Solver {
         Solver {
-            gravity: Vec2::new(0.0, 20000.0),
+            gravity: Vec2::new(0.0, 1000.0),
         }
     }
 
     pub fn update(self, dt: f32, bodies: &mut Vec<VerletObject>) {
         let sub_steps: usize = 8;
         let sub_dt = dt / sub_steps as f32;
-        for _ in [0..sub_steps] {
+        for _ in 0..sub_steps {
             self.apply_gravity(bodies);
             self.apply_constraint(bodies);
             self.solve_collisions(bodies);
