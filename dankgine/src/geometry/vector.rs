@@ -1,5 +1,5 @@
 use std::ops::{Add, Div, Mul, Sub};
-#[derive(Clone, Debug, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, Copy, PartialEq, PartialOrd, Serialize, Deserialize)]
 pub struct Vec2 {
     pub x: f32,
     pub y: f32,
