@@ -1,6 +1,7 @@
 use crate::geometry::verlet::VerletObject;
 use crate::utils::get_two_mut;
 
+#[allow(dead_code)]
 pub fn solve(bodies: &mut Vec<VerletObject>) {
     let count = bodies.len();
 

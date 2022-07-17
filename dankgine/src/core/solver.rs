@@ -51,6 +51,6 @@ impl Solver {
     }
 
     fn solve_collisions(self, bodies: &mut Vec<VerletObject>) {
-        CollisionSolver::sweep_and_prune(bodies);
+        CollisionSolver::brute_force(bodies);
     }
 }
