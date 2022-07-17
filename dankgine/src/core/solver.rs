@@ -1,3 +1,4 @@
+use crate::collisions::solvers::solver::CollisionSolver;
 use crate::geometry::vector::Vec2;
 use crate::geometry::verlet::VerletObject;
 
@@ -50,47 +51,6 @@ impl Solver {
     }
 
     fn solve_collisions(self, bodies: &mut Vec<VerletObject>) {
-        let count = bodies.len();
-
-        for i in 0..count {
-            for k in 0..count {
-                let (b1, b2) = match get_two_mut(i, k, bodies) {
-                    Some((b1, b2)) => (b1, b2),
-                    None => continue,
-                };
-
-                let collision_axis = b1.current_position - b2.current_position;
-                let dist = collision_axis.length();
-                let min_dist = b1.radius + b2.radius;
-
-                if dist < min_dist {
-                    let n = collision_axis / dist;
-                    let delta = min_dist - dist;
-
-                    b1.current_position = b1.current_position + (n * 0.5 * delta);
-                    b2.current_position = b2.current_position - (n * 0.5 * delta);
-                }
-            }
-        }
-    }
-}
-
-fn get_two_mut<'a, T>(i: usize, k: usize, vec: &'a mut Vec<T>) -> Option<(&'a mut T, &'a mut T)> {
-    let vec_length = vec.len();
-    if i == k {
-        return None;
-    } else if i >= vec_length || k >= vec_length {
-        return None;
-    }
-
-    if i < k {
-        //we want i in the left half since k will be in the right
-        let (left, right) = vec.split_at_mut(i + 1);
-        return Some((left.last_mut().unwrap(), right.get_mut(k - i - 1).unwrap()));
-    } else {
-        //i > k
-        //we want i in the right half since k will be in the left
-        let (left, right) = vec.split_at_mut(i);
-        return Some((right.first_mut().unwrap(), left.get_mut(k).unwrap()));
+        CollisionSolver::sweep_and_prune(bodies);
     }
 }

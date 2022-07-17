@@ -1,6 +1,6 @@
 use crate::geometry::vector::Vec2;
 
-#[derive(Serialize, Deserialize, Clone, Copy)]
+#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, PartialOrd)]
 pub struct VerletObject {
     pub current_position: Vec2,
     pub old_position: Vec2,
