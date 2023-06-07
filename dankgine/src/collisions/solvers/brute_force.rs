@@ -3,7 +3,7 @@ use crate::utils::get_two_mut;
 
 #[allow(dead_code)]
 pub fn solve(bodies: &mut Vec<VerletObject>) {
-    let count = bodies.len();
+    let count: usize = bodies.len();
 
     for i in 0..count {
         for k in 0..count {

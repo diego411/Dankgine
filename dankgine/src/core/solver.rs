@@ -51,6 +51,6 @@ impl Solver {
     }
 
     fn solve_collisions(self, bodies: &mut Vec<VerletObject>) {
-        CollisionSolver::brute_force(bodies);
+        CollisionSolver::quadtree(bodies);
     }
 }

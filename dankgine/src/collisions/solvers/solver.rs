@@ -1,4 +1,5 @@
 use super::brute_force;
+use super::quadtree_solver;
 use super::sweep_and_prune;
 use crate::geometry::verlet::VerletObject;
 
@@ -13,5 +14,9 @@ impl CollisionSolver {
 
     pub fn sweep_and_prune(bodies: &mut Vec<VerletObject>) {
         sweep_and_prune::solve(bodies);
+    }
+
+    pub fn quadtree(bodies: &mut Vec<VerletObject>) {
+        quadtree_solver::solve(bodies);
     }
 }
