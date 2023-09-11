@@ -1,6 +1,6 @@
 use crate::geometry::vector::Vec2;
 
-#[derive(Debug, Serialize, Deserialize, Clone, Copy, PartialEq, PartialOrd)]
+#[derive(Debug, Serialize, Deserialize, PartialEq, PartialOrd)]
 pub struct VerletObject {
     pub current_position: Vec2,
     pub old_position: Vec2,
@@ -19,13 +19,13 @@ impl VerletObject {
             current_position: pos,
             old_position: pos,
             acceleration: Vec2::new(0.0, 0.0),
-            radius: radius,
+            radius,
         }
     }
 
     pub fn update_position(&mut self, dt: f32) {
         let velocity = self.current_position - self.old_position;
-        self.old_position = self.current_position.clone();
+        self.old_position = self.current_position;
         self.current_position = self.current_position + velocity + self.acceleration * dt * dt;
         self.acceleration = Vec2::new(0.0, 0.0);
     }
