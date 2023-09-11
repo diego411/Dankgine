@@ -1,8 +1,9 @@
-use crate::collisions::solvers::solver::CollisionSolver;
-use crate::geometry::vector::Vec2;
-use crate::geometry::verlet::VerletObject;
+use crate::{
+    collisions::solvers::solver::quadtree_solve, geometry::vector::Vec2,
+    geometry::verlet::VerletObject,
+};
 
-#[derive(Serialize, Deserialize, Clone, Copy)]
+#[derive(Serialize, Deserialize, Clone, Copy, Default)]
 pub struct Solver {
     gravity: Vec2,
 }
@@ -51,6 +52,6 @@ impl Solver {
     }
 
     fn solve_collisions(self, bodies: &mut Vec<VerletObject>) {
-        CollisionSolver::brute_force(bodies);
+        quadtree_solve(bodies);
     }
 }

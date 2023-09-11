@@ -9,23 +9,28 @@ init().then(() => {
 
         p5.setup = function () {
             p5.createCanvas(600, 600)
+            //p5.frameRate(10)
         }
 
         p5.draw = function () {
             p5.background(0)
 
             state = JSON.parse(Dankgine.update())
+            //console.log(state)
 
             for (const body of state.bodies) {
                 p5.circle(body.current_position.x, body.current_position.y, body.radius * 2)
             }
 
-            if (p5.frameCount % 16 === 0) {
+            if (p5.frameCount % 10 === 0) {
                 Dankgine.add_body(200, 50, 5)
+                Dankgine.add_body(250, 50, 5)
                 Dankgine.add_body(300, 50, 5)
+                Dankgine.add_body(350, 50, 5)
                 Dankgine.add_body(400, 50, 5)
-                n = n + 3
+                n = n + 5
             }
+
             p5.push()
             p5.noFill()
             p5.stroke(255)

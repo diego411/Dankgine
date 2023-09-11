@@ -1,5 +1,5 @@
 use std::ops::{Add, Div, Mul, Sub};
-#[derive(Clone, Debug, Copy, PartialEq, PartialOrd, Serialize, Deserialize)]
+#[derive(Clone, Debug, Copy, PartialEq, PartialOrd, Serialize, Deserialize, Default)]
 pub struct Vec2 {
     pub x: f32,
     pub y: f32,
@@ -7,7 +7,7 @@ pub struct Vec2 {
 
 impl Vec2 {
     pub fn new(x: f32, y: f32) -> Vec2 {
-        Vec2 { x: x, y: y }
+        Vec2 { x, y }
     }
 
     pub fn length(self) -> f32 {

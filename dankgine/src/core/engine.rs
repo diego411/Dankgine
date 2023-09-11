@@ -4,7 +4,7 @@ use crate::geometry::verlet::VerletObject;
 use crate::STATE;
 use wasm_bindgen::prelude::*;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Default)]
 pub struct State {
     bodies: Vec<VerletObject>,
 }
